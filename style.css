@@ -109,6 +109,12 @@ h3 {
     margin-top: 0.5rem;
 }
 
+.list-subtitle {
+    margin: 1rem 0 0.5rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
 .grid-two {
     display: grid;
     gap: 1.5rem;
