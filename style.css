@@ -1,10 +1,15 @@
 :root {
-    --bg: #f7f3ee;
-    --accent: #5e7c8a;
-    --button: #c77c66;
-    --text: #2f2f2f;
-    --surface: #ffffff;
-    --surface-muted: #f1ebe3;
+    /* Новая палитра: глубокие тёплые фоны, мягкий светлый текст, персиковый CTA и приглушённый sage */
+    --bg: #2b221f;
+    --hero-bg: #332824;
+    --accent: #9db5af;
+    --button: #e89a8f;
+    --button-hover: #d48176;
+    --text: #f2e9df;
+    --text-muted: #d3c2b4;
+    --surface: #3a2f2b;
+    --surface-muted: #443630;
+    --border: #5b4a42;
     --radius: 0.85rem;
     --max-width: 72rem;
 }
@@ -26,7 +31,14 @@ body {
 }
 
 a {
-    color: inherit;
+    color: var(--button);
+    text-decoration-color: transparent;
+    text-underline-offset: 0.2em;
+}
+
+a:hover {
+    color: var(--button-hover);
+    text-decoration-color: var(--button-hover);
 }
 
 img {
@@ -41,6 +53,7 @@ img {
 
 .hero {
     padding: 4rem 0 3rem;
+    background-color: var(--hero-bg);
 }
 
 .eyebrow {
@@ -74,10 +87,12 @@ h3 {
 .subtitle {
     max-width: 38rem;
     margin-bottom: 1.5rem;
+    color: var(--text-muted);
 }
 
 .section {
     padding: 2.75rem 0;
+    background-color: var(--bg);
 }
 
 .section-muted {
@@ -103,7 +118,7 @@ h3 {
     background-color: var(--surface);
     border-radius: var(--radius);
     overflow: hidden;
-    border: 1px solid rgba(47, 47, 47, 0.1);
+    border: 1px solid var(--border);
 }
 
 .button {
@@ -111,11 +126,15 @@ h3 {
     border: 0;
     border-radius: 999px;
     background-color: var(--button);
-    color: #fff;
+    color: #2b221f;
     font-weight: 600;
     text-decoration: none;
     padding: 0.8rem 1.4rem;
     cursor: pointer;
+}
+
+.button:hover {
+    background-color: var(--button-hover);
 }
 
 .button:focus-visible,
@@ -154,12 +173,19 @@ label {
 input,
 textarea {
     width: 100%;
-    border: 1px solid rgba(47, 47, 47, 0.25);
+    border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 0.75rem;
     font: inherit;
     background-color: var(--surface);
     color: var(--text);
+}
+
+p,
+li,
+label,
+.footer {
+    color: var(--text-muted);
 }
 
 .success-message {
@@ -168,7 +194,7 @@ textarea {
     padding: 0.9rem 1rem;
     border-radius: var(--radius);
     background-color: var(--surface);
-    border: 1px solid rgba(94, 124, 138, 0.35);
+    border: 1px solid var(--accent);
 }
 
 .success-message:target {
@@ -178,6 +204,7 @@ textarea {
 .footer {
     padding: 1.5rem 0 2rem;
     font-size: 0.95rem;
+    background-color: var(--hero-bg);
 }
 
 .metrika-pixel {
