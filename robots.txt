@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://saryan-psychologist.github.io/sitemap.xml
