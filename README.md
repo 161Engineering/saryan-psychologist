@@ -9,7 +9,7 @@
 - `robots.txt` — инструкции для поисковых роботов
 - `sitemap.xml` — карта сайта
 - `assets/favicon.svg` — favicon-заглушка
-- `assets/images/photo-placeholder.svg` — заглушка фото
+- `assets/images/a22fff4b-2c01-430c-b3af-d0eefef33c85.jpg` — основное фото психолога
 
 ## Деплой на GitHub Pages
 
@@ -29,7 +29,13 @@
 - В `index.html` замените ID Яндекс Метрики:
   - `ym(00000000, "init", ... )`
   - `https://mc.yandex.ru/watch/00000000`
-- При необходимости замените `assets/images/photo-placeholder.svg` на реальное фото.
+- При необходимости замените `assets/images/a22fff4b-2c01-430c-b3af-d0eefef33c85.jpg` на актуальное фото.
+
+## SEO-проверка перед публикацией
+
+- Проверьте, что `canonical`, `og:url`, `og:image` и `sitemap.xml` указывают на актуальный домен.
+- Убедитесь, что в `robots.txt` указан корректный URL карты сайта.
+- После релиза отправьте карту сайта в Яндекс Вебмастер и Google Search Console.
 
 ## Проверка
 
