@@ -1,16 +1,10 @@
 :root {
-    /* Тёплая терапевтичная палитра: кремовый фон, шоколадный текст, персиковый акцент и мягкий sage */
-    --bg: #eadfd2;
-    --hero-bg: #e4d5c6;
-    --accent: #89a89a;
-    --accent-secondary: #7f9b8f;
-    --button: #dd9388;
-    --button-hover: #cb766a;
-    --text: #352823;
-    --text-muted: #554841;
-    --surface: #e7d8c9;
-    --surface-muted: #dfcfbf;
-    --border: #c9b4a1;
+    --bg: #f7f3ee;
+    --accent: #5e7c8a;
+    --button: #c77c66;
+    --text: #2f2f2f;
+    --surface: #ffffff;
+    --surface-muted: #f1ebe3;
     --radius: 0.85rem;
     --max-width: 72rem;
 }
@@ -32,14 +26,7 @@ body {
 }
 
 a {
-    color: var(--button);
-    text-decoration-color: transparent;
-    text-underline-offset: 0.2em;
-}
-
-a:hover {
-    color: var(--button-hover);
-    text-decoration-color: var(--button-hover);
+    color: inherit;
 }
 
 img {
@@ -54,11 +41,10 @@ img {
 
 .hero {
     padding: 4rem 0 3rem;
-    background-color: var(--hero-bg);
 }
 
 .eyebrow {
-    color: var(--text-muted);
+    color: var(--accent);
     font-weight: 600;
     margin: 0 0 0.75rem;
 }
@@ -68,7 +54,6 @@ h2,
 h3 {
     line-height: 1.25;
     margin-top: 0;
-    color: var(--text);
 }
 
 h1 {
@@ -89,12 +74,10 @@ h3 {
 .subtitle {
     max-width: 38rem;
     margin-bottom: 1.5rem;
-    color: var(--text-muted);
 }
 
 .section {
     padding: 2.75rem 0;
-    background-color: var(--bg);
 }
 
 .section-muted {
@@ -120,7 +103,7 @@ h3 {
     background-color: var(--surface);
     border-radius: var(--radius);
     overflow: hidden;
-    border: 1px solid var(--border);
+    border: 1px solid rgba(47, 47, 47, 0.1);
 }
 
 .button {
@@ -128,15 +111,11 @@ h3 {
     border: 0;
     border-radius: 999px;
     background-color: var(--button);
-    color: var(--text);
+    color: #fff;
     font-weight: 600;
     text-decoration: none;
     padding: 0.8rem 1.4rem;
     cursor: pointer;
-}
-
-.button:hover {
-    background-color: var(--button-hover);
 }
 
 .button:focus-visible,
@@ -149,7 +128,7 @@ textarea:focus-visible {
 .price {
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--accent-secondary);
+    color: var(--accent);
     margin: 0.25rem 0 0.5rem;
 }
 
@@ -170,24 +149,17 @@ textarea:focus-visible {
 
 label {
     font-weight: 600;
-    color: var(--text);
 }
 
 input,
 textarea {
     width: 100%;
-    border: 1px solid var(--border);
+    border: 1px solid rgba(47, 47, 47, 0.25);
     border-radius: var(--radius);
     padding: 0.75rem;
     font: inherit;
     background-color: var(--surface);
     color: var(--text);
-}
-
-p,
-li,
-.footer {
-    color: var(--text-muted);
 }
 
 .success-message {
@@ -196,7 +168,7 @@ li,
     padding: 0.9rem 1rem;
     border-radius: var(--radius);
     background-color: var(--surface);
-    border: 1px solid var(--accent);
+    border: 1px solid rgba(94, 124, 138, 0.35);
 }
 
 .success-message:target {
@@ -206,7 +178,6 @@ li,
 .footer {
     padding: 1.5rem 0 2rem;
     font-size: 0.95rem;
-    background-color: var(--surface);
 }
 
 .metrika-pixel {
