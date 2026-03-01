@@ -96,7 +96,7 @@ h3 {
 }
 
 .section-muted {
-    background-color: var(--surface-muted);
+    background-color: var(--bg);
 }
 
 .list {
@@ -135,6 +135,23 @@ h3 {
 
 .button:hover {
     background-color: var(--button-hover);
+}
+
+.section .button {
+    margin-top: 1.25rem;
+}
+
+.quick-links {
+    margin: 1.1rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem 1rem;
+}
+
+.quick-links a {
+    color: var(--accent);
 }
 
 .button:focus-visible,
