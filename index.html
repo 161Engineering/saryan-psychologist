@@ -241,21 +241,27 @@
                     Вами и отвечу на вопросы.</p>
                 <p>Стоимость консультации — 3500 руб.</p>
 
-                <form action="https://formspree.io/f/xzdalere" method="POST" class="contact-form">
+                <form action="https://formspree.io/f/xzdalere" method="POST" class="contact-form" id="contactForm">
                     <input type="hidden" name="_next" value="https://saryan-psychologist.github.io/#form-success" />
+                    <input type="hidden" id="phone-raw" name="phone" value="" />
+
                     <div class="field">
                         <label for="name">Имя</label>
-                        <input id="name" name="name" type="text" autocomplete="name" required />
+                        <input id="name" name="name" type="text" autocomplete="name" required minlength="2"
+                            pattern="[А-Яа-яЁёA-Za-z\s\-]+"
+                            title="Допускаются только русские и латинские буквы, пробел и дефис" />
                     </div>
 
                     <div class="field">
                         <label for="phone">Телефон</label>
-                        <input id="phone" name="phone" type="tel" autocomplete="tel" required />
+                        <input id="phone" type="tel" autocomplete="tel" required placeholder="+7 (___) ___-__-__"
+                            title="Введите номер телефона в формате +7 (XXX) XXX-XX-XX" />
                     </div>
 
                     <div class="field">
                         <label for="request">Коротко о запросе</label>
-                        <textarea id="request" name="request" rows="5" required></textarea>
+                        <textarea id="request" name="request" rows="5" required minlength="10" maxlength="300"
+                            title="От 10 до 300 символов"></textarea>
                     </div>
 
                     <button type="submit" class="button">Отправить</button>
@@ -273,6 +279,108 @@
             <p>© 2026 Анна Сарьян. Бережная онлайн психологическая поддержка взрослых.</p>
         </div>
     </footer>
+
+    <script>
+        (function () {
+            'use strict';
+
+            const phoneInput = document.getElementById('phone');
+            const phoneRaw = document.getElementById('phone-raw');
+            const form = document.getElementById('contactForm');
+
+            // Функция извлечения только цифр из строки
+            function getDigits(value) {
+                return value.replace(/\D/g, '');
+            }
+
+            // Функция форматирования номера телефона
+            function formatPhone(value) {
+                let digits = getDigits(value);
+
+                // Если первая цифра 8, заменяем на 7
+                if (digits.startsWith('8')) {
+                    digits = '7' + digits.slice(1);
+                }
+
+                // Ограничиваем длину до 11 цифр
+                if (digits.length > 11) {
+                    digits = digits.slice(0, 11);
+                }
+
+                // Форматирование: +7 (XXX) XXX-XX-XX
+                let formatted = '';
+
+                if (digits.length > 0) {
+                    formatted = '+7';
+
+                    if (digits.length > 1) {
+                        formatted += ' (' + digits.slice(1, 4);
+                    }
+
+                    if (digits.length >= 4) {
+                        formatted += ') ' + digits.slice(4, 7);
+                    }
+
+                    if (digits.length >= 7) {
+                        formatted += '-' + digits.slice(7, 9);
+                    }
+
+                    if (digits.length >= 9) {
+                        formatted += '-' + digits.slice(9, 11);
+                    }
+                }
+
+                return { formatted: formatted, digits: digits };
+            }
+
+            // Обработчик ввода в поле телефона
+            phoneInput.addEventListener('input', function (e) {
+                const cursorPosition = e.target.selectionStart;
+                const oldLength = e.target.value.length;
+
+                const result = formatPhone(e.target.value);
+                e.target.value = result.formatted;
+                phoneRaw.value = result.digits;
+
+                // Восстановление позиции курсора с учетом добавленных символов форматирования
+                const newLength = e.target.value.length;
+                const lengthDiff = newLength - oldLength;
+                e.target.setSelectionRange(cursorPosition + lengthDiff, cursorPosition + lengthDiff);
+            });
+
+            // Обработчик вставки из буфера обмена
+            phoneInput.addEventListener('paste', function (e) {
+                e.preventDefault();
+                const pastedText = (e.clipboardData || window.clipboardData).getData('text');
+                const result = formatPhone(pastedText);
+                phoneInput.value = result.formatted;
+                phoneRaw.value = result.digits;
+            });
+
+            // Валидация перед отправкой формы
+            form.addEventListener('submit', function (e) {
+                const digits = getDigits(phoneInput.value);
+
+                // Проверяем, что телефон содержит ровно 11 цифр
+                if (digits.length !== 11) {
+                    e.preventDefault();
+                    phoneInput.setCustomValidity('Номер телефона должен содержать 11 цифр');
+                    phoneInput.reportValidity();
+                    return false;
+                } else {
+                    phoneInput.setCustomValidity('');
+                }
+
+                // Обновляем скрытое поле с финальным значением
+                phoneRaw.value = digits;
+            });
+
+            // Сброс кастомного сообщения при изменении поля
+            phoneInput.addEventListener('input', function () {
+                phoneInput.setCustomValidity('');
+            });
+        })();
+    </script>
 </body>
 
 </html>
